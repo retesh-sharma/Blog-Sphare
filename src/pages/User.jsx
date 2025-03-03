@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { useLoaderData } from "react-router-dom";
+import {getAllUser} from "../api_fetch/user";
 import UserForm from "../components/UserForm";
 import UserTable from "../components/UserTable";
-import getAllUser from "../api_fetch/user";
 
-function Home() {
+function User() {
   const loaderData = useLoaderData();
   const [users, setUsers] = useState(loaderData.data || []);
 
@@ -17,11 +17,10 @@ function Home() {
 
   return (
     <div>
-      <h1>Home</h1>
       <UserForm refreshUsers={refreshUsers} />
-      <UserTable users={users} />
+      <UserTable refreshUsers={refreshUsers} users={users} />
     </div>
   );
 }
 
-export default Home;
+export default User;
